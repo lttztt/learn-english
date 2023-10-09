@@ -5,7 +5,7 @@ export default function Practice() {
   const chinese = "现在";
   const english = "now";
   // const answer = "now";
-  const soundMark = "nau";
+  const soundMark = "/nau/";
   const [inputValue, setInputValue] = useState("");
   const [currentValue, setCurrentValue] = useState(chinese);
   // 两种状态 回答 发音
@@ -37,7 +37,10 @@ export default function Practice() {
     setCurrentValue(english);
     setDisplaySoundMark(soundMark);
     setCurrentState("answer");
-    console.log("sound");
+    playSound();
+  }
+  function playSound() {
+    // https://dict.youdao.com/dictvoice?audio=now&type=1
   }
   function checkValidity(input: string) {
     return input === english;
@@ -50,6 +53,11 @@ export default function Practice() {
         <div>
           <div>{chinese}</div>
           <div>{soundMark}</div>
+          <audio
+            autoPlay
+            src="https://dict.youdao.com/dictvoice?audio=now&type=1"
+            controls={true}
+          />
         </div>
       )}
       <input
