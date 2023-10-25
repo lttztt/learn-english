@@ -1,4 +1,5 @@
 'use client'
+import './globals.css'
 import Answer from '@/components/Answer'
 import Question from '@/components/Question'
 import { useEffect, useRef, useState } from 'react'
@@ -51,12 +52,19 @@ export default function Home() {
     updateWord()
   }
   return (
-    <div>
-      {currentMode === 'question' ? (
-        <Question word={questionWord} onCheckAnswer={handleCheckAnswer} />
-      ) : (
-        <Answer word={answerWord} soundMark={answerSoundMark} onToNextStatement={onToNextStatement} />
-      )}
+    <div className="flex flex-col h-full w-full bg-[#121826]">
+      <header className="flex justify-between items-center p-4">
+        <div>logo</div>
+        <div>menu</div>
+      </header>
+      <main className="flex-1 flex items-center justify-center p-8 text-2xl text-center">
+        {currentMode === 'question' ? (
+          <Question word={questionWord} onCheckAnswer={handleCheckAnswer} />
+        ) : (
+          <Answer word={answerWord} soundMark={answerSoundMark} onToNextStatement={onToNextStatement} />
+        )}
+      </main>
+      <footer className="flex-shrink-0 flex items-center justify-center p-4">备案信息</footer>
     </div>
   )
 }

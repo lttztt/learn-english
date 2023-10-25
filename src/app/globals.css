@@ -8,6 +8,15 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+}
+body {
+  color: #eee;
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
