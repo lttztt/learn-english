@@ -1,24 +1,23 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from 'react'
 
 export default function Question({
   word,
   onCheckAnswer,
 }: {
-  word: string;
-  onCheckAnswer: (userInput: string) => void;
+  word: string
+  onCheckAnswer: (userInput: string) => void
 }) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('')
   // 处理输入框的变化
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
+    setInputValue(e.target.value)
+  }
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      console.log("enter");
-      onCheckAnswer(inputValue);
-      setInputValue("");
+    if (e.key === 'Enter') {
+      onCheckAnswer(inputValue)
+      setInputValue('')
     }
-  };
+  }
   return (
     <div>
       <div>{word}</div>
@@ -31,5 +30,5 @@ export default function Question({
         onKeyDown={handleInputKeyDown}
       />
     </div>
-  );
+  )
 }
