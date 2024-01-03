@@ -4,6 +4,8 @@ import Answer from '@/components/Answer'
 import Question from '@/components/Question'
 import { useEffect, useRef, useState } from 'react'
 import { useCourse, useFailedCount } from '@/store/useCourse'
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 export default function Home() {
   const [currentMode, setCurrentMode] = useState<'question' | 'answer'>('question')
@@ -30,6 +32,15 @@ export default function Home() {
     toNextStatement()
     setCurrentMode('question')
   }
+  const { data: session } = useSession()
+  if (!session) {
+    return (
+      <Link href="/api/auth/signin">
+        <button className="bg-slate-600">sign in with github</button>
+      </Link>
+    )
+  }
+
   return (
     <div className="flex flex-col h-full w-full bg-[#121826]">
       <header className="flex justify-between items-center p-4">
